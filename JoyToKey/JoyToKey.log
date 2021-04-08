@@ -1,0 +1,32 @@
+2021/04/08 06:02:53.750 Info   Starting JoyToKey v6.5
+2021/04/08 06:02:53.750 Info   ExeFile = C:\int\w32\tools\JoyToKey\JoyToKey.exe
+2021/04/08 06:02:53.750 Info   Args = C:\int\w32\tools\JoyToKey\JoyToKey.exe
+2021/04/08 06:02:53.750 Info   DataDirectory = C:\Users\Administrator\Documents\JoyToKey\
+2021/04/08 06:02:53.750 Info   Profile = 
+2021/04/08 06:02:53.750 Info   IniFile = C:\Users\Administrator\Documents\JoyToKey\JoyToKey.ini
+2021/04/08 06:02:53.750 Info   Windows Version = 6.2
+2021/04/08 06:02:53.790 Info   Loaded VistaAPI.dll - using advanced API (Utils\Utils.cpp#322)
+2021/04/08 06:02:53.791 Info   Loading ini file: C:\Users\Administrator\Documents\JoyToKey\JoyToKey.ini (AppInfo.cpp#229)
+2021/04/08 06:02:53.791 Info   LicenseKey "" is not valid
+2021/04/08 06:02:54.110 Info   Loading XInput1_3.dll (Joystick.cpp#132)
+2021/04/08 06:02:54.113 Info   Initialized XInput (Joystick.cpp#150)
+2021/04/08 06:02:54.176 Info   Detected a DI joystick: {9796EFE0-77A6-11EB-8001-444553540000}, USB Game Controllers, USB Game Controllers
+2021/04/08 06:02:54.177 Info   numAxis = 4
+2021/04/08 06:02:54.177 Info   numPOVs = 1
+2021/04/08 06:02:54.177 Info   numButtons = 12
+2021/04/08 06:02:54.177 Info   EnumDeviceObject: Axis offset=0 type=502 name=Z Rotation
+2021/04/08 06:02:54.177 Info   EnumDeviceObject: Axis offset=4 type=202 name=Z Axis
+2021/04/08 06:02:54.177 Info   EnumDeviceObject: Axis offset=8 type=102 name=Y Axis
+2021/04/08 06:02:54.177 Info   EnumDeviceObject: Axis offset=12 type=2 name=X Axis
+2021/04/08 06:02:54.210 Info   DetectJoysticks: Detected 1 DI joystick(s)
+2021/04/08 06:02:54.213 Info   Joystick #1: USB Game Controllers
+2021/04/08 06:02:54.213 Info   1 joysticks are detected (Joystick.cpp#172)
+2021/04/08 06:02:54.213 Info   ConfigDir=C:\Users\Administrator\Documents\JoyToKey\*.cfg (ConfigFileManager.cpp#43)
+2021/04/08 06:02:54.223 Info   Failed to find AppLink.dat (AppLink\AppLinkManager.cpp#32)
+2021/04/08 06:02:54.239 Info   TimerInit: Initializing timer with x1 speed mode (interval = 16 msec)
+2021/04/08 10:30:13.837 Error  Access is denied.
+ (Utils\Utils.cpp#354)
+2021/04/08 12:04:59.914 Error  Access is denied.
+ (Utils\Utils.cpp#354)
+2021/04/08 17:19:33.032 Info   Save config file "CoreGames - Sniper Alley" (ConfigFileManager.cpp#425)
+2021/04/08 17:20:18.664 Info   Save config file "CoreGames - Sniper Alley" (ConfigFileManager.cpp#425)
