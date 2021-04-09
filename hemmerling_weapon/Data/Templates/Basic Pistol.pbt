@@ -4,9 +4,9 @@ Assets {
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 14156651541393010698
+      RootId: 14465856665253126779
       Objects {
-        Id: 14156651541393010698
+        Id: 14465856665253126779
         Name: "Basic Pistol"
         Transform {
           Scale {
@@ -16,10 +16,10 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 5047134629311476418
-        ChildIds: 17873086566573210660
-        ChildIds: 5970618703958104407
-        ChildIds: 1362060855448717416
+        ChildIds: 8081741933805014334
+        ChildIds: 13049320787006281096
+        ChildIds: 7505991858045127771
+        ChildIds: 12709504337035680235
         UnregisteredParameters {
         }
         WantsNetworking: true
@@ -35,11 +35,11 @@ Assets {
         Equipment {
           SocketName: "right_prop"
           PickupTrigger {
-            SubObjectId: 5970618703958104407
+            SubObjectId: 7505991858045127771
           }
           Weapon {
             ProjectileAssetRef {
-              Id: 16313312156352177803
+              Id: 6351286052835644006
             }
             MuzzleFlashAssetRef {
               Id: 9281011578601836522
@@ -84,7 +84,7 @@ Assets {
             MaxAmmo: 16
             AmmoType: "rounds"
             MultiShot: 1
-            ProjectileSpeed: 25000
+            ProjectileSpeed: 100
             ProjectileLifeSpan: 10
             ProjectileLength: 50
             ProjectileRadius: 2
@@ -93,10 +93,10 @@ Assets {
             SpreadIncreasePerShot: 1
             SpreadPenaltyPerShot: 0.5
             DefaultAbility {
-              SubObjectId: 5047134629311476418
+              SubObjectId: 8081741933805014334
             }
             ReloadAbility {
-              SubObjectId: 17873086566573210660
+              SubObjectId: 13049320787006281096
             }
             Damage: 25
             WeaponTrajectoryMode {
@@ -106,7 +106,7 @@ Assets {
         }
       }
       Objects {
-        Id: 5047134629311476418
+        Id: 8081741933805014334
         Name: "Shoot"
         Transform {
           Location {
@@ -119,7 +119,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 14156651541393010698
+        ParentId: 14465856665253126779
         UnregisteredParameters {
         }
         WantsNetworking: true
@@ -183,7 +183,7 @@ Assets {
         }
       }
       Objects {
-        Id: 17873086566573210660
+        Id: 13049320787006281096
         Name: "Reload"
         Transform {
           Location {
@@ -196,7 +196,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 14156651541393010698
+        ParentId: 14465856665253126779
         UnregisteredParameters {
         }
         WantsNetworking: true
@@ -255,7 +255,7 @@ Assets {
         }
       }
       Objects {
-        Id: 5970618703958104407
+        Id: 7505991858045127771
         Name: "PickupTrigger"
         Transform {
           Location {
@@ -269,7 +269,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 14156651541393010698
+        ParentId: 14465856665253126779
         UnregisteredParameters {
         }
         WantsNetworking: true
@@ -295,7 +295,36 @@ Assets {
         }
       }
       Objects {
-        Id: 1362060855448717416
+        Id: 12709504337035680235
+        Name: "ClientContext"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 14465856665253126779
+        ChildIds: 6111984688663269067
+        WantsNetworking: true
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:forceoff"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        NetworkContext {
+        }
+      }
+      Objects {
+        Id: 6111984688663269067
         Name: "Client Art"
         Transform {
           Location {
@@ -308,11 +337,10 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 14156651541393010698
-        ChildIds: 6112954265110768632
+        ParentId: 12709504337035680235
+        ChildIds: 12834176564142532478
         UnregisteredParameters {
         }
-        WantsNetworking: true
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -326,7 +354,7 @@ Assets {
         }
       }
       Objects {
-        Id: 6112954265110768632
+        Id: 12834176564142532478
         Name: "Geo"
         Transform {
           Location {
@@ -339,12 +367,12 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 1362060855448717416
-        ChildIds: 16142181337060486089
-        ChildIds: 227202885866204189
-        ChildIds: 17661404483695676331
-        ChildIds: 13325591224137657058
-        ChildIds: 15826693310415172956
+        ParentId: 6111984688663269067
+        ChildIds: 10900691265567783062
+        ChildIds: 80008351921536491
+        ChildIds: 1270309268855438405
+        ChildIds: 2610821760378623914
+        ChildIds: 10621716444137714462
         UnregisteredParameters {
         }
         Collidable_v2 {
@@ -361,7 +389,7 @@ Assets {
         }
       }
       Objects {
-        Id: 16142181337060486089
+        Id: 10900691265567783062
         Name: "Modern Weapon - Slide 01"
         Transform {
           Location {
@@ -376,7 +404,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 6112954265110768632
+        ParentId: 12834176564142532478
         UnregisteredParameters {
           Overrides {
             Name: "ma:Shared_BaseMaterial:color"
@@ -428,7 +456,7 @@ Assets {
         }
       }
       Objects {
-        Id: 227202885866204189
+        Id: 80008351921536491
         Name: "Trigger - Rear"
         Transform {
           Location {
@@ -444,7 +472,7 @@ Assets {
             Z: 0.0606815
           }
         }
-        ParentId: 6112954265110768632
+        ParentId: 12834176564142532478
         UnregisteredParameters {
           Overrides {
             Name: "ma:Shared_BaseMaterial:id"
@@ -487,7 +515,7 @@ Assets {
         }
       }
       Objects {
-        Id: 17661404483695676331
+        Id: 1270309268855438405
         Name: "Modern Weapon - Grip 04"
         Transform {
           Location {
@@ -503,7 +531,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 6112954265110768632
+        ParentId: 12834176564142532478
         UnregisteredParameters {
           Overrides {
             Name: "ma:Shared_BaseMaterial:color"
@@ -540,7 +568,7 @@ Assets {
         }
       }
       Objects {
-        Id: 13325591224137657058
+        Id: 2610821760378623914
         Name: "Modern Weapon - Sight Forward 01"
         Transform {
           Location {
@@ -555,7 +583,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 6112954265110768632
+        ParentId: 12834176564142532478
         UnregisteredParameters {
           Overrides {
             Name: "ma:Shared_Detail1:id"
@@ -598,7 +626,7 @@ Assets {
         }
       }
       Objects {
-        Id: 15826693310415172956
+        Id: 10621716444137714462
         Name: "Modern Weapon - Sight Rear 01"
         Transform {
           Location {
@@ -613,7 +641,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 6112954265110768632
+        ParentId: 12834176564142532478
         UnregisteredParameters {
         }
         Collidable_v2 {

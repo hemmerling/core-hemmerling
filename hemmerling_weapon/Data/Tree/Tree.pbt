@@ -19,9 +19,10 @@ Objects {
   ChildIds: 14713340454944924967
   ChildIds: 10005074784157121906
   ChildIds: 14982843161775482339
-  ChildIds: 17372338683059287599
+  ChildIds: 14997745834537138392
   ChildIds: 1734065483012003956
   ChildIds: 4449822301757691475
+  ChildIds: 302240513122137711
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -34,6 +35,49 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Folder {
+  }
+}
+Objects {
+  Id: 302240513122137711
+  Name: "Basic Pistol"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 14465856665253126779
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Basic Pistol"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 1359436369975129299
+    }
   }
 }
 Objects {
@@ -84,7 +128,7 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 15693579027133628144
+  ChildIds: 12865877134192825009
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
   }
@@ -98,7 +142,7 @@ Objects {
   }
 }
 Objects {
-  Id: 15693579027133628144
+  Id: 12865877134192825009
   Name: "Bullet"
   Transform {
     Scale {
@@ -116,7 +160,7 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
-      key: 16178339615426428246
+      key: 14533149257243476941
       value {
         Overrides {
           Name: "Name"
@@ -137,13 +181,13 @@ Objects {
       }
     }
     TemplateAsset {
-      Id: 6869042776225527442
+      Id: 6351286052835644006
     }
   }
 }
 Objects {
-  Id: 17372338683059287599
-  Name: "Basic Pistol"
+  Id: 14997745834537138392
+  Name: "Universal Object Spawner"
   Transform {
     Scale {
       X: 1
@@ -152,723 +196,43 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 8316864674584802535
-  ChildIds: 14801506675879000577
-  ChildIds: 7474726872535277426
-  ChildIds: 7723919283265553355
-  UnregisteredParameters {
-  }
-  WantsNetworking: true
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
     Value: "mc:evisibilitysetting:inheritfromparent"
   }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Equipment {
-    SocketName: "right_prop"
-    PickupTrigger {
-      SelfId: 7474726872535277426
-    }
-    Weapon {
-      ProjectileAssetRef {
-        Id: 6869042776225527442
-      }
-      MuzzleFlashAssetRef {
-        Id: 9281011578601836522
-      }
-      TrailAssetRef {
-        Id: 9023864673320310867
-      }
-      ImpactAssetRef {
-        Id: 15728676179772725900
-      }
-      UseReticle: true
-      Muzzle {
-        Location {
-          X: 33
-          Z: 15
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 12724310867555688579
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Universal Object Spawner"
+        }
+        Overrides {
+          Name: "cs:Template1"
+          AssetReference {
+            Id: 1359436369975129299
+          }
+        }
+        Overrides {
+          Name: "cs:Template2"
+          AssetReference {
+            Id: 841534158063459245
+          }
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 300
+          }
         }
       }
-      AnimationSet: "1hand_pistol_stance"
-      OutOfAmmoSfxAssetRef {
-        Id: 1683114021203363022
-      }
-      ReloadSfxAssetRef {
-        Id: 12107734285812188601
-      }
-      ShootAnimation: "2hand_rifle_shoot"
-      ImpactProjectileAssetRef {
-        Id: 841534158063459245
-      }
-      BeamAssetRef {
-        Id: 841534158063459245
-      }
-      BurstCount: 1
-      BurstDuration: 1
-      AttackCooldown: 0.25
-      Range: 70000
-      ImpactPlayerAssetRef {
-        Id: 307406115803496087
-      }
-      ReticleType {
-        Value: "mc:ereticletype:crosshair"
-      }
-      MaxAmmo: 16
-      AmmoType: "rounds"
-      MultiShot: 1
-      ProjectileSpeed: 100
-      ProjectileLifeSpan: 10
-      ProjectileLength: 50
-      ProjectileRadius: 2
-      SpreadMax: 2
-      SpreadDecreaseSpeed: 8
-      SpreadIncreasePerShot: 1
-      SpreadPenaltyPerShot: 0.5
-      DefaultAbility {
-        SelfId: 8316864674584802535
-      }
-      ReloadAbility {
-        SelfId: 14801506675879000577
-      }
-      Damage: 25
-      WeaponTrajectoryMode {
-        Value: "mc:eweapontrajectorymode:muzzletolooktarget"
-      }
     }
-  }
-  InstanceHistory {
-    SelfId: 17372338683059287599
-    SubobjectId: 14156651541393010698
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-    WasRoot: true
-  }
-}
-Objects {
-  Id: 7723919283265553355
-  Name: "ClientContext"
-  Transform {
-    Location {
+    TemplateAsset {
+      Id: 16342017597804997421
     }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 17372338683059287599
-  ChildIds: 2848374270144122445
-  WantsNetworking: true
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  NetworkContext {
-  }
-}
-Objects {
-  Id: 2848374270144122445
-  Name: "Client Art"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7723919283265553355
-  ChildIds: 7040786390616059357
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  NetworkContext {
-  }
-  InstanceHistory {
-    SelfId: 2848374270144122445
-    SubobjectId: 1362060855448717416
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 7040786390616059357
-  Name: "Geo"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 2848374270144122445
-  ChildIds: 15376689947186556396
-  ChildIds: 3911193470278986296
-  ChildIds: 13869292048837627278
-  ChildIds: 10200218792210492615
-  ChildIds: 17204810339945362297
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Folder {
-    IsGroup: true
-  }
-  InstanceHistory {
-    SelfId: 7040786390616059357
-    SubobjectId: 6112954265110768632
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 17204810339945362297
-  Name: "Modern Weapon - Sight Rear 01"
-  Transform {
-    Location {
-      X: -7.69331264
-      Z: 19.2971725
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7040786390616059357
-  UnregisteredParameters {
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 9117384065423546074
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-    }
-  }
-  InstanceHistory {
-    SelfId: 17204810339945362297
-    SubobjectId: 15826693310415172956
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 10200218792210492615
-  Name: "Modern Weapon - Sight Forward 01"
-  Transform {
-    Location {
-      X: 27.5106201
-      Z: 19.9975243
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7040786390616059357
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_Detail1:id"
-      AssetReference {
-        Id: 3702191406046426907
-      }
-    }
-    Overrides {
-      Name: "ma:Shared_Detail1:color"
-      Color {
-        R: 0.0423114114
-        G: 0.258182913
-        B: 0.644479871
-        A: 1
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 7395101924488058849
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-    }
-  }
-  InstanceHistory {
-    SelfId: 10200218792210492615
-    SubobjectId: 13325591224137657058
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 13869292048837627278
-  Name: "Modern Weapon - Grip 04"
-  Transform {
-    Location {
-      X: -0.222086906
-      Y: -0.110616684
-      Z: 8.6464119
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7040786390616059357
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:color"
-      Color {
-        R: 0.205078766
-        G: 0.205078766
-        B: 0.205078766
-        A: 1
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 15552769917126078605
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-    }
-  }
-  InstanceHistory {
-    SelfId: 13869292048837627278
-    SubobjectId: 17661404483695676331
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 3911193470278986296
-  Name: "Trigger - Rear"
-  Transform {
-    Location {
-      X: 2.68535042
-      Z: 6.59273911
-    }
-    Rotation {
-      Yaw: 89.9999542
-    }
-    Scale {
-      X: 0.0216475781
-      Y: 0.0397833697
-      Z: 0.0606815
-    }
-  }
-  ParentId: 7040786390616059357
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:id"
-      AssetReference {
-        Id: 132672053610873933
-      }
-    }
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:color"
-      Color {
-        R: 0.149
-        G: 0.149
-        B: 0.149
-        A: 1
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 16965777294932964901
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-    }
-  }
-  InstanceHistory {
-    SelfId: 3911193470278986296
-    SubobjectId: 227202885866204189
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 15376689947186556396
-  Name: "Modern Weapon - Slide 01"
-  Transform {
-    Location {
-      X: -9.3879385
-      Z: 15.6609459
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 7040786390616059357
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:color"
-      Color {
-        R: 0.205078766
-        G: 0.205078766
-        B: 0.205078766
-        A: 1
-      }
-    }
-    Overrides {
-      Name: "ma:Shared_Detail1:id"
-      AssetReference {
-        Id: 3702191406046426907
-      }
-    }
-    Overrides {
-      Name: "ma:Shared_Detail1:color"
-      Color {
-        R: 0.0423114114
-        G: 0.258182913
-        B: 0.644479871
-        A: 1
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 697347799158381382
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    InteractWithTriggers: true
-    StaticMesh {
-      Physics {
-      }
-    }
-  }
-  InstanceHistory {
-    SelfId: 15376689947186556396
-    SubobjectId: 16142181337060486089
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 7474726872535277426
-  Name: "PickupTrigger"
-  Transform {
-    Location {
-      X: 15
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 17372338683059287599
-  UnregisteredParameters {
-  }
-  WantsNetworking: true
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Trigger {
-    Interactable: true
-    InteractionLabel: "Equip Basic Pistol"
-    TeamSettings {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    TriggerShape_v2 {
-      Value: "mc:etriggershape:box"
-    }
-  }
-  InstanceHistory {
-    SelfId: 7474726872535277426
-    SubobjectId: 5970618703958104407
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 14801506675879000577
-  Name: "Reload"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 17372338683059287599
-  UnregisteredParameters {
-  }
-  WantsNetworking: true
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Ability {
-    IsEnabled: true
-    KeyBinding: "ability_ult"
-    CastPhaseSettings {
-      Duration: 1.3
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      PreventOtherAbilities: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:aim"
-      }
-    }
-    ExecutePhaseSettings {
-      Duration: 0.1
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      PreventOtherAbilities: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:aim"
-      }
-    }
-    RecoveryPhaseSettings {
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:none"
-      }
-    }
-    CooldownPhaseSettings {
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:none"
-      }
-    }
-    Animation: "1hand_pistol_reload_magazine"
-    KeyBinding_v2 {
-      Value: "mc:egameaction:extraaction_33"
-    }
-  }
-  InstanceHistory {
-    SelfId: 14801506675879000577
-    SubobjectId: 17873086566573210660
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
-  }
-}
-Objects {
-  Id: 8316864674584802535
-  Name: "Shoot"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 17372338683059287599
-  UnregisteredParameters {
-  }
-  WantsNetworking: true
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Ability {
-    IsEnabled: true
-    KeyBinding: "ability_primary"
-    CastPhaseSettings {
-      Duration: 0.03
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      PreventOtherAbilities: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:aim"
-      }
-    }
-    ExecutePhaseSettings {
-      Duration: 0.1
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      PreventOtherAbilities: true
-      IsTargetDataUpdated: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:aim"
-      }
-    }
-    RecoveryPhaseSettings {
-      Duration: 0.01
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      PreventOtherAbilities: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:none"
-      }
-    }
-    CooldownPhaseSettings {
-      Duration: 0.1
-      CanMove: true
-      CanJump: true
-      CanRotate: true
-      PreventOtherAbilities: true
-      Facing_V2 {
-        Value: "mc:eabilitysetfacing:none"
-      }
-    }
-    Animation: "1hand_pistol_shoot"
-    KeyBinding_v2 {
-      Value: "mc:egameaction:primaryaction"
-    }
-  }
-  InstanceHistory {
-    SelfId: 8316864674584802535
-    SubobjectId: 5047134629311476418
-    InstanceId: 302240513122137711
-    TemplateId: 1359436369975129299
   }
 }
 Objects {

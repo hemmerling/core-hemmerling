@@ -1,12 +1,12 @@
 Assets {
-  Id: 4768770504663505193
+  Id: 6351286052835644006
   Name: "Bullet"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 18272735483226691867
+      RootId: 14533149257243476941
       Objects {
-        Id: 18272735483226691867
+        Id: 14533149257243476941
         Name: "Bullet"
         Transform {
           Scale {
@@ -15,7 +15,7 @@ Assets {
             Z: 0.1
           }
         }
-        ParentId: 8278555517909318235
+        ParentId: 1734065483012003956
         UnregisteredParameters {
           Overrides {
             Name: "ma:Shared_BaseMaterial:id"
