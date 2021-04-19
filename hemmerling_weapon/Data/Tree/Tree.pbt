@@ -73,6 +73,12 @@ Objects {
           Rotator {
           }
         }
+        Overrides {
+          Name: "ImpactPlayerId"
+          AssetReference {
+            Id: 11375862946661514515
+          }
+        }
       }
     }
     TemplateAsset {
