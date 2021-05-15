@@ -71,6 +71,15 @@ Assets {
   }
 }
 Assets {
+  Id: 13316315337052751897
+  Name: "\"A Slice of Life\" Music Construction Kit (Layers) 01"
+  PlatformAssetType: 10
+  PrimaryAsset {
+    AssetType: "AudioBlueprintAssetRef"
+    AssetId: "abp_asliceoflife_LayersKit_ref"
+  }
+}
+Assets {
   Id: 13068157693951019914
   Name: "Text 04: 4"
   PlatformAssetType: 1
@@ -86,6 +95,15 @@ Assets {
   PrimaryAsset {
     AssetType: "StaticMeshAssetRef"
     AssetId: "sm_cube_002"
+  }
+}
+Assets {
+  Id: 11884859988427704665
+  Name: "Ball - Volleyball 01"
+  PlatformAssetType: 1
+  PrimaryAsset {
+    AssetType: "StaticMeshAssetRef"
+    AssetId: "sm_prop_urb_ball_volleyball_01_ref"
   }
 }
 Assets {
