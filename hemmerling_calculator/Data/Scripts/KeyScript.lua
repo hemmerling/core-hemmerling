@@ -1,16 +1,17 @@
+-- require()
 local propCalculateScript = script:GetCustomProperty("CalculateScript")
 local reqScript = require(propCalculateScript)
 
+-- custom properies
+local propTextDisplay = script:GetCustomProperty("TextDisplay"):WaitForObject()
+local propValue = script.parent:GetCustomProperty("Value")
+
 local trigger = script.parent
 local Key = script:GetCustomProperty("Key"):WaitForObject()
-local RightPos = Key:GetPosition()
-print(RightPos)
+
+-- code starts here
+
 Key:SetColor(Color.WHITE) 
-
-
-local Value = script.parent:GetCustomProperty("Value")
-print ( "Value =" )
-print ( Value )
 
 function OnBeginOverlap(trigger, other)
 	if other:IsA("Player") then
@@ -27,7 +28,9 @@ end
 function OnInteracted(trigger, other)
 	if other:IsA("Player") then
     	Key:SetColor(Color.RED)	
-		reqScript.Calculate(Value)
+		local TextDisplay = reqScript.Calculate(propValue)
+		print(propTextDisplay.text)
+		propTextDisplay.text = tostring(TextDisplay)
 		Task.Wait(2)
 		Key:SetColor(Color.WHITE)				
 		UI.PrintToScreen("Interacted!")
