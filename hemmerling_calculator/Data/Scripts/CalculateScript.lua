@@ -334,11 +334,6 @@ end
 
 State4Table["="] = {Action = function(Value) return(State4.Equals(Value)) end}
 State4Table["CLR"] = {Action = function(Value) return(State4.Clr(Value)) end}
-State4Table["+"] = {Action = function(Value) return(State4.Add(Value, STATE.THREE)) end}
-State4Table["-"] = {Action = function(Value) return(State4.Subtract(Value, STATE.THREE)) end}
-State4Table["*"] = {Action = function(Value) return(State4.Multiply(Value, STATE.THREE)) end}
-State4Table["/"] = {Action = function(Value) return(State4.Divide(Value, STATE.THREE)) end}
---
 State4Table["0"] = {Action = function(Value) return(State4.Number(Value)) end}
 State4Table["1"] = {Action = function(Value) return(State4.Number(Value)) end}
 State4Table["2"] = {Action = function(Value) return(State4.Number(Value)) end}
@@ -349,6 +344,10 @@ State4Table["6"] = {Action = function(Value) return(State4.Number(Value)) end}
 State4Table["7"] = {Action = function(Value) return(State4.Number(Value)) end}
 State4Table["8"] = {Action = function(Value) return(State4.Number(Value)) end}
 State4Table["9"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["+"] = {Action = function(Value) return(State4.AddSubMulDiv(Value)) end}
+State4Table["-"] = {Action = function(Value) return(State4.AddSubMulDiv(Value)) end}
+State4Table["*"] = {Action = function(Value) return(State4.AddSubMulDiv(Value)) end}
+State4Table["/"] = {Action = function(Value) return(State4.AddSubMulDiv(Value)) end}
 
 State41Table["+"] = {Action = function(Value) return(State4.Add(Value, STATE.ONE)) end}
 State41Table["-"] = {Action = function(Value) return(State4.Subtract(Value, STATE.ONE)) end}
@@ -382,28 +381,42 @@ function State4.Equals(Value)
 	-- local Result = State41Table[Operator].Action(nil)
 	Operand2 = 0
 	Operator = nil
+	State = STATE.ONE
 	return( Result )
+end
+
+function State4.AddSubMulDiv(Value)
+	local Result = State41()
+	-- local Result = State41Table[Operator].Action(nil)
+	Operand2 = 0
+	Operator = Value	
+	State = STATE.THREE
+	return( Result )
+end
+
+local ZeroToNineTable1 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+local ZeroToNineTable2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+local function isNumeric (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+    return false
 end
 
 -- Waiting for Operator or Equals and process the first operation.
 function StateFunction.State4(Value)
-	print("State4 Einsprung , Value = " .. Value)
 	local Result = nil
 	if Value == OPERATION.EQ then
 		Result = State4.Equals(Value)
 	elseif Value == OPERATION.CLR then
 		Result = State4.Clear(Value)
-	elseif Value == OPERATION.ADD then 
-		Result = State4.Add(Value, STATE.THREE)
-	elseif Value == OPERATION.SUB then 
-		Result = State4.Subtract(Value, STATE.THREE)
-	elseif Value == OPERATION.MUL then 
-		Result = State4.Multiply(Value, STATE.THREE)
-	elseif Value == OPERATION.DIV then 
-		Result = State4.Divide(Value, STATE.THREE)
-	else
-		print("verarbeite 2.Zahl")
+	elseif isNumeric(ZeroToNineTable2, Value) then
 		Result =  State4.Number(Value)
+	else
+		Result = State4.AddSubMulDiv(Value)
 	end
 	return(Result)
 end
