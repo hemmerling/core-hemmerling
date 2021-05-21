@@ -395,8 +395,7 @@ function State4.AddSubMulDiv(Value)
 	return( Result )
 end
 
-local ZeroToNineTable1 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
-local ZeroToNineTable2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+local ZeroToNineTable = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 local function isNumeric (tab, val)
     for index, value in ipairs(tab) do
@@ -410,11 +409,12 @@ end
 -- Waiting for Operator or Equals and process the first operation.
 function StateFunction.State4(Value)
 	local Result = nil
+	print (isNumeric(ZeroToNineTable, Value))
 	if Value == OPERATION.EQ then
 		Result = State4.Equals(Value)
 	elseif Value == OPERATION.CLR then
 		Result = State4.Clear(Value)
-	elseif isNumeric(ZeroToNineTable2, Value) then
+	elseif isNumeric(ZeroToNineTable, Value) then
 		Result =  State4.Number(Value)
 	else
 		Result = State4.AddSubMulDiv(Value)
