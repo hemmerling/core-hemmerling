@@ -19,7 +19,7 @@ scripts that use it pull it straight out of project content!
 
 -- OPERATOR
 -- "attempt to index a nil value (global 'OPERATOR')" => nil can't be an OPERATOR
-local OPERATOR = {
+local OPERATION = {
 	EQ = "=",
 	CLR = "CLR",
 	ADD = "+",
@@ -66,8 +66,11 @@ local StateTable = {
 -- Local functions
 -- ***************
 
+-- State 1
+
 local State1 = {}
 local State123 = {}
+local State1Table= {}
 
 function State123.Eq(Value)
 	local Result = Operand1
@@ -100,61 +103,55 @@ function State1.Number(Value)
 	return(Result)
 end
 
-local State1Table= {}
-State1Table["="] = {operator = function(Value) return(State123.Eq(Value)) end}
-State1Table["CLR"] = {operator = function(Value) return(State123.Clr(Value)) end}
-State1Table["+"] = {operator = function(Value) return(State1.AddSubMulDiv(Value)) end}
-State1Table["-"] = {operator = function(Value) return(State1.AddSubMulDiv(Value)) end}
-State1Table["*"] = {operator = function(Value) return(State1.AddSubMulDiv(Value)) end}
-State1Table["/"] = {operator = function(Value) return(State1.AddSubMulDiv(Value)) end}
-State1Table["0"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["1"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["2"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["3"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["4"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["5"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["6"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["7"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["8"] = {operator = function(Value) return(State1.Number(Value)) end}
-State1Table["9"] = {operator = function(Value) return(State1.Number(Value)) end}
+State1Table["="] = {Action = function(Value) return(State123.Eq(Value)) end}
+State1Table["CLR"] = {Action = function(Value) return(State123.Clr(Value)) end}
+State1Table["+"] = {Action = function(Value) return(State1.AddSubMulDiv(Value)) end}
+State1Table["-"] = {Action = function(Value) return(State1.AddSubMulDiv(Value)) end}
+State1Table["*"] = {Action = function(Value) return(State1.AddSubMulDiv(Value)) end}
+State1Table["/"] = {Action = function(Value) return(State1.AddSubMulDiv(Value)) end}
+State1Table["0"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["1"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["2"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["3"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["4"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["5"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["6"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["7"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["8"] = {Action = function(Value) return(State1.Number(Value)) end}
+State1Table["9"] = {Action = function(Value) return(State1.Number(Value)) end}
+
+-- Waiting for Operand1 or Operator
+function StateFunction.State1x(Value)
+	return (State1Table[Value].Action(Value))
+end
 
 -- Waiting for Operand1 or Operator
 function StateFunction.State1(Value)
-	return (State1Table[Value].operator(Value))
-end
-
---[[ -- Waiting for Operand1 or Operator
-function StateFunction.State1(Value)
-	local Result = Operand1
+	local Result = nil
 	-- If you press an Operator key without prior Operand, current Operand1 is saved 
-	if Value == OPERATOR.EQ then 
-		Operator = nil
-		State = STATE.ONE
-	elseif Value == OPERATOR.CLR then 
-		Operator = nil
-		State = STATE.ONE
-		Result = 0
-	elseif Value == OPERATOR.ADD then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.SUB then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.MUL then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.DIV then 
-		Operator = Value
-		State = STATE.THREE
+	if Value == OPERATION.EQ then 
+		Result = State123.Eq(Value)
+	elseif Value == OPERATION.CLR then 
+		Result = State123.Clr(Value)
+	elseif Value == OPERATION.ADD then 
+		Result = State1.AddSubMulDiv(Value)
+	elseif Value == OPERATION.SUB then 
+		Result = State1.AddSubMulDiv(Value)
+	elseif Value == OPERATION.MUL then 
+		Result = State1.AddSubMulDiv(Value)
+	elseif Value == OPERATION.DIV then 
+		Result = State1.AddSubMulDiv(Value)
 	else 
-		Operand1 = Value
-		Result = Value
-		State = STATE.TWO
+		Result = State1.Number(Value)
 	end
 	return(Result)
-end ]]
+end
 
+-- State 2
+
+local State2 = {}
 local State23 = {}
+local State2Table= {}
 
 function State23.AddSubMulDiv(Value)
 	local Result = Operand1
@@ -163,47 +160,66 @@ function State23.AddSubMulDiv(Value)
 	return (Result)
 end
 
-local State2Table= {}
-State2Table["="] = {operator = function(Value) return(State123.Eq(Value)) end}
-State2Table["CLR"] = {operator = function(Value) return(State123.Clr(Value)) end}
-State2Table["+"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State2Table["-"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State2Table["*"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State2Table["/"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
+function State2.Number(Value)
+	local Result = nil
+	if Operand1 == 0 then
+		Operand1 = Value
+	else
+		Operand1 = Operand1 .. Value
+	end
+	Result = Operand1
+	State = STATE.TWO
+	return(Result)
+end
+
+State2Table["="] = {Action = function(Value) return(State123.Eq(Value)) end}
+State2Table["CLR"] = {Action = function(Value) return(State123.Clr(Value)) end}
+State2Table["+"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State2Table["-"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State2Table["*"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State2Table["/"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+--
+State2Table["0"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["1"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["2"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["3"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["4"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["5"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["6"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["7"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["8"] = {Action = function(Value) return(State2.Number(Value)) end}
+State2Table["9"] = {Action = function(Value) return(State2.Number(Value)) end}
+
+-- Waiting for Operator
+function StateFunction.State2x(Value)
+	return (State2Table[Value].Action(Value))
+end
 
 -- Waiting for Operator
 function StateFunction.State2(Value)
-	return (State2Table[Value].operator(Value))
-end
-
---[[ -- Waiting for Operator
-function StateFunction.State2(Value)
-	local Result = Operand1
-	if Value == OPERATOR.EQ then 
-		Operator = nil
-		State = STATE.ONE
-	elseif Value == OPERATOR.CLR then 
-		Operator = nil
-		State = STATE.ONE
-	elseif Value == OPERATOR.ADD then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.SUB then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.MUL then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.DIV then 
-		Operator = Value
-		State = STATE.THREE
+	local Result = nil
+	if Value == OPERATION.EQ then 
+		Result = State123.Eq(Value)
+	elseif Value == OPERATION.CLR then 
+		Result = State123.Clr(Value)
+	elseif Value == OPERATION.ADD then 
+		Result = State23.AddSubMulDiv(Value)
+	elseif Value == OPERATION.SUB then 
+		Result = State23.AddSubMulDiv(Value)
+	elseif Value == OPERATION.MUL then 
+		Result = State23.AddSubMulDiv(Value)
+	elseif Value == OPERATION.DIV then 
+		Result = State23.AddSubMulDiv(Value)
 	else
-		-- ignore all numerical input
+		Result = State2.Number(Value)
 	end
 	return(Result)
-end ]]
+end
+
+-- State 3
 
 local State3 = {}
+local State3Table= {}
 
 function State3.Number(Value)
 	Operand2 = Value
@@ -212,95 +228,67 @@ function State3.Number(Value)
 	return(Result)
 end
 
-local State3Table= {}
-State3Table["="] = {operator = function(Value) return(State123.Eq(Value)) end}
-State3Table["CLR"] = {operator = function(Value) return(State123.Clr(Value)) end}
-State3Table["+"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State3Table["-"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State3Table["*"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State3Table["/"] = {operator = function(Value) return(State23.AddSubMulDiv(Value)) end}
-State3Table["0"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["1"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["2"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["3"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["4"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["5"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["6"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["7"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["8"] = {operator = function(Value) return(State3.Number(Value)) end}
-State3Table["9"] = {operator = function(Value) return(State3.Number(Value)) end}
+State3Table["="] = {Action = function(Value) return(State123.Eq(Value)) end}
+State3Table["CLR"] = {Action = function(Value) return(State123.Clr(Value)) end}
+State3Table["+"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State3Table["-"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State3Table["*"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State3Table["/"] = {Action = function(Value) return(State23.AddSubMulDiv(Value)) end}
+State3Table["0"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["1"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["2"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["3"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["4"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["5"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["6"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["7"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["8"] = {Action = function(Value) return(State3.Number(Value)) end}
+State3Table["9"] = {Action = function(Value) return(State3.Number(Value)) end}
+
+-- Waiting for Operand2. If no Operand2, ignore
+function StateFunction.State3x(Value)
+	return (State3Table[Value].Action(Value))
+end
 
 -- Waiting for Operand2. If no Operand2, ignore
 function StateFunction.State3(Value)
-	return (State3Table[Value].operator(Value))
-end
-
---[[ -- Waiting for Operand2. If no Operand2, ignore
-function StateFunction.State3(Value)
-	local Result = Operand1
-	-- If you press an Operator key without prior Operand, current Operand1 is saved 
-	if Value == OPERATOR.EQ then 
-		Operator = nil
-		State = STATE.ONE
-	elseif Value == OPERATOR.CLR then 
-		Operator = nil
-		State = STATE.ONE
-	elseif Value == OPERATOR.ADD then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.SUB then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.MUL then 
-		Operator = Value
-		State = STATE.THREE
-	elseif Value == OPERATOR.DIV then 
-		Operator = Value
-		State = STATE.THREE
-	else 
-		Operand2 = Value
-		State = STATE.FOUR
-		Result = Value
-	end
-	return(Result)
-end ]]
-
-State4 = {}
-
-local State4Table= {}
-State4Table["="] = {operator = function(Value) return(State4.Equals(Value)) end}
-State4Table["CLR"] = {operator = function(Value) return(State4.Clr(Value)) end}
-State4Table["+"] = {operator = function(Value) return(State4.Add(Value, STATE.THREE)) end}
-State4Table["-"] = {operator = function(Value) return(State4.Subtract(Value, STATE.THREE)) end}
-State4Table["*"] = {operator = function(Value) return(State4.Multiply(Value, STATE.THREE)) end}
-State4Table["/"] = {operator = function(Value) return(State4.Divide(Value, STATE.THREE)) end}
-
-local State41Table= {}
-State41Table["+"] = {operator = function(Value) return(State4.Add(Value, STATE.ONE)) end}
-State41Table["-"] = {operator = function(Value) return(State4.Subtract(Value, STATE.ONE)) end}
-State41Table["*"] = {operator = function(Value) return(State4.Multiply(Value, STATE.ONE)) end}
-State41Table["/"] = {operator = function(Value) return(State4.Divide(Value, STATE.ONE)) end}
-
--- Waiting for Operator or Equals and process the first operation.
-function StateFunction.State4xxxx(Value)
-	return (State4Table[Value].operator(Value))
-end
-
--- Subfunction of State4() to process the Operator
-local function State41(Value)
 	local Result = nil
-	if Operator == OPERATOR.ADD then 
-		Result = State4.Add(Value, STATE.THREE)
-	elseif Operator == OPERATOR.SUB then 
-		Result = State4.Subtract(Value, STATE.THREE)
-	elseif Operator == OPERATOR.MUL then 
-		Result = State4.Multiply(Value, STATE.THREE)
-	elseif Operator == OPERATOR.DIV then 
-		Result = State4.Divide(Value, STATE.THREEa)
-	else
+	-- If you press an Operator key without prior Operand, current Operand1 is saved 
+	if Value == OPERATION.EQ then 
+		Result = State123.Eq(Value)
+	elseif Value == OPERATION.CLR then 
+		Result = State123.Clr(Value)
+	elseif Value == OPERATION.ADD then 
+		Result = State23.AddSubMulDiv(Value)
+	elseif Value == OPERATION.SUB then 
+		Result = State23.AddSubMulDiv(Value)
+	elseif Value == OPERATION.MUL then 
+		Result = State23.AddSubMulDiv(Value)
+	elseif Value == OPERATION.DIV then 
+		Result = State23.AddSubMulDiv(Value)
+	else 
+		Result = State3.Number(Value)
 	end
 	return(Result)
-end  
+end
+
+-- State 4
+
+local State4 = {}
+local State4Table = {}
+local State41Table = {}
+
+function State4.Number(Value)
+	local Result = nil
+	if Operand2 == 0 then
+		Operand2 = Value
+	else
+		Operand2 = Operand2 .. Value
+	end
+	Result = Operand2
+	State = STATE.FOUR
+	return(Result)
+end
 
 function State4.Add(Value, NewState)
     Operand1 = Operand1 + Operand2
@@ -335,13 +323,6 @@ function State4.Divide(Value, NewState)
 	return( Operand1 )
 end
 
-function State4.Equals(Value)
-	-- local Result = State41()
-	local Result = State41Table[Operator].operator(nil, STATE.ONE)
-	Operand2 = 0
-	return( Result )
-end
-
 function State4.Clear(Value)
 	local Result = 0
 	Operand1 = 0
@@ -351,27 +332,95 @@ function State4.Clear(Value)
 	return( Result )
 end
 
+State4Table["="] = {Action = function(Value) return(State4.Equals(Value)) end}
+State4Table["CLR"] = {Action = function(Value) return(State4.Clr(Value)) end}
+State4Table["+"] = {Action = function(Value) return(State4.Add(Value, STATE.THREE)) end}
+State4Table["-"] = {Action = function(Value) return(State4.Subtract(Value, STATE.THREE)) end}
+State4Table["*"] = {Action = function(Value) return(State4.Multiply(Value, STATE.THREE)) end}
+State4Table["/"] = {Action = function(Value) return(State4.Divide(Value, STATE.THREE)) end}
+--
+State4Table["0"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["1"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["2"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["3"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["4"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["5"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["6"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["7"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["8"] = {Action = function(Value) return(State4.Number(Value)) end}
+State4Table["9"] = {Action = function(Value) return(State4.Number(Value)) end}
+
+State41Table["+"] = {Action = function(Value) return(State4.Add(Value, STATE.ONE)) end}
+State41Table["-"] = {Action = function(Value) return(State4.Subtract(Value, STATE.ONE)) end}
+State41Table["*"] = {Action = function(Value) return(State4.Multiply(Value, STATE.ONE)) end}
+State41Table["/"] = {Action = function(Value) return(State4.Divide(Value, STATE.ONE)) end}
+
+-- Waiting for Operator or Equals and process the first operation.
+function StateFunction.State4x(Value)
+	return (State4Table[Value].Action(Value))
+end
+
+-- Subfunction of State4() to process the Operator
+local function State41(Value)
+	local Result = nil
+	if Operator == OPERATION.ADD then 
+		Result = State4.Add(Value, STATE.ONE)
+	elseif Operator == OPERATION.SUB then 
+		Result = State4.Subtract(Value, STATE.ONE)
+	elseif Operator == OPERATION.MUL then 
+		Result = State4.Multiply(Value, STATE.ONE)
+	elseif Operator == OPERATION.DIV then 
+		Result = State4.Divide(Value, STATE.ONE)
+	else
+		-- should not happen! 
+	end
+	return(Result)
+end  
+
+function State4.Equals(Value)
+	local Result = State41()
+	-- local Result = State41Table[Operator].Action(nil)
+	Operand2 = 0
+	Operator = nil
+	return( Result )
+end
+
 -- Waiting for Operator or Equals and process the first operation.
 function StateFunction.State4(Value)
+	print("State4 Einsprung , Value = " .. Value)
 	local Result = nil
-	if Value == OPERATOR.EQ then
+	if Value == OPERATION.EQ then
 		Result = State4.Equals(Value)
-	elseif Value == OPERATOR.CLR then
+	elseif Value == OPERATION.CLR then
 		Result = State4.Clear(Value)
+	elseif Value == OPERATION.ADD then 
+		Result = State4.Add(Value, STATE.THREE)
+	elseif Value == OPERATION.SUB then 
+		Result = State4.Subtract(Value, STATE.THREE)
+	elseif Value == OPERATION.MUL then 
+		Result = State4.Multiply(Value, STATE.THREE)
+	elseif Value == OPERATION.DIV then 
+		Result = State4.Divide(Value, STATE.THREE)
 	else
-		Result = State41(Value)
+		print("verarbeite 2.Zahl")
+		Result =  State4.Number(Value)
 	end
 	return(Result)
 end
 
--- ErrorState. Can just be cleaned by pressing "CLR" button
+-- State 5
+
+-- The ErrorState may just be cleaned by pressing "CLR" button
 function StateFunction.State5(Value)
-	if Value == OPERATOR.CLR then 
+	local Result = nil
+	if Value == OPERATION.CLR then 
+		Result = 0
 		Operand1 = 0
 		Operand2 = 0
 		Operator = nil
 		State = STATE.ONE
 	end
+	return(Result)
 end
 
 
