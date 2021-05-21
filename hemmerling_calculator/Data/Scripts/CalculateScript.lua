@@ -39,6 +39,7 @@ local STATE = {
 -- ***************
 -- Local variables
 -- ***************
+
 local Operand1 = 0	
 local Operand2 = 0
 local Operator = nil
