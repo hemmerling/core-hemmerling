@@ -2,6 +2,7 @@ local Button = script:GetCustomProperty("Button"):WaitForObject()
 -- local Button = script.parent
 
 local CtrlPressed = false
+UI.SetCanCursorInteractWithUI(true)
  
 function OnClicked(whichButton)
 	print("button clicked: " .. whichButton.name)

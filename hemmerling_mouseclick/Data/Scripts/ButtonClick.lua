@@ -2,7 +2,8 @@ local Button = script:GetCustomProperty("Button"):WaitForObject()
 
 Button.visibility = Visibility.FORCE_ON
 UI.SetCursorVisible(true)
- 
+-- UI.SetCanCursorInteractWithUI(true)
+
 function OnClicked(whichButton)
 	print("button clicked: " .. whichButton.name)
 end
