@@ -640,9 +640,6 @@ Objects {
   Name: "Trigger"
   Transform {
     Location {
-      X: 4.99999952
-      Y: -5
-      Z: 2.98023224e-07
     }
     Rotation {
     }
@@ -5061,6 +5058,7 @@ Objects {
       ChatMode {
         Value: "mc:echatmode:teamandall"
       }
+      EnablePlayModeProfiler: true
       ChatSettings {
         ChatMode {
         }
