@@ -98,15 +98,6 @@ Assets {
   }
 }
 Assets {
-  Id: 11884859988427704665
-  Name: "Ball - Volleyball 01"
-  PlatformAssetType: 1
-  PrimaryAsset {
-    AssetType: "StaticMeshAssetRef"
-    AssetId: "sm_prop_urb_ball_volleyball_01_ref"
-  }
-}
-Assets {
   Id: 11515840070784317904
   Name: "Skylight"
   PlatformAssetType: 6
