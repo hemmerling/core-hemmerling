@@ -3318,7 +3318,6 @@ end
                     instance = _G[instanceName]
                 else
                     -- With standard Lua:
-                    -- _G[instanceName] => "function: 00fbb6c0"
                     instanceName = className
                     instance = _G[instanceName]
                 end
