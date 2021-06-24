@@ -20,3 +20,7 @@
 **/lua_modules/
 **/lua.bat
 **/luarocks.bat
+
+# VisualStudio Code
+# No need to synchronize
+**/.vscode/
